@@ -18,6 +18,10 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
     public static String targetWord = "";
     public static int ammountOfGuesses = 6;
 
+    //Statistics
+    public static int statsFirstGuess = 0, statsSecondGuess = 0, statsThirdGuess = 0, statsFourthGuess = 0, statsFifthGuess = 0, statsSixthGuess = 0, wordsGuessed, wordsMissed, wordStreak;
+
+    //Initialise GUI elements
     static JTextField guessField1, guessField2, guessField3, guessField4, guessField5, guessField6;
     static JLabel guessesLeft;
 
@@ -25,18 +29,20 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
     JLabel guessedLabel1, guessedLabel2, guessedLabel3, guessedLabel4, guessedLabel5, guessedLabel6;
     JButton submit;
 
-    int statsFirstGuess = 0, statsSecondGuess = 0, statsThirdGuess = 0, statsFourthGuess = 0, statsFifthGuess = 0, statsSixthGuess = 0, wordsGuessed, wordsMissed, wordStreak;
-
     JComboBox<String> menu;
 
     GridBagConstraints gbc = new GridBagConstraints();
 
+    //GUI
     public Main(){
+        //Initialise the GUI
         this.setMinimumSize(new Dimension(600, 700));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setLayout(new GridBagLayout());
+        this.setTitle("Wordle");
 
+        //Set title
         JLabel title = new JLabel("<html><span style=\"color:#FFFF00\">W</span><span style=\"color:#808080\">O</span><span style=\"color:#00FF00\">R</span><span style=\"color:#FFFF00\">D</span><span style=\"color:#808080\">L</span><span style=\"color:#00FF00\">E</span></html>");
         title.setFont(title.getFont().deriveFont(Font.BOLD, 64f));
         gbc.gridx = 0;
@@ -44,28 +50,32 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         gbc.gridwidth = 2;
         this.add(title, gbc);
 
-        String country[]={"Menu", "New Game", "Stats", "Help", "Exit"};
-        menu = new JComboBox(country);
+        //Create menu
+        String option[]={"Menu", "New Game", "Stats", "Help", "Exit"};
+        menu = new JComboBox(option);
         menu.addItemListener(this);
         gbc.gridx=0;
         gbc.gridy=1;
         menu.setPreferredSize(new Dimension(400,30));
         this.add(menu,gbc);
 
+        //Guess 1
+        //Guess label
         gbc.gridwidth = 1;
         gbc.insets = new Insets(0,30,0,30);
         guessLabel1 = new JLabel("Guess 1:");
         guessLabel1.setFont(guessLabel1.getFont().deriveFont(24.0f));
         gbc.gridx = 0;
         gbc.gridy = 2;
-
         this.add(guessLabel1,gbc);
+        //Guess field
         guessField1 = new JTextField(5);
         guessField1.setFont(guessField1.getFont().deriveFont(18.0f));
         guessField1.addKeyListener(this);
         gbc.gridx = 1;
         gbc.gridy = 2;
         this.add(guessField1,gbc);
+        //Guessed word label
         guessedLabel1 = new JLabel("Guessed 1:");
         guessedLabel1.setFont(guessedLabel1.getFont().deriveFont(Font.BOLD, 30f));
         guessedLabel1.setBackground(Color.RED);
@@ -73,11 +83,14 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         gbc.gridy = 3;
         this.add(guessedLabel1,gbc);
 
+        //Guess 2
+        //Guess label
         guessLabel2 = new JLabel("Guess 2:");
         guessLabel2.setFont(guessLabel2.getFont().deriveFont(24.0f));
         gbc.gridx = 0;
         gbc.gridy = 4;
         this.add(guessLabel2,gbc);
+        //Guess field
         guessField2 = new JTextField(5);
         guessField2.setEnabled(false);
         guessField2.setFont(guessField2.getFont().deriveFont(18.0f));
@@ -85,18 +98,21 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         gbc.gridx = 1;
         gbc.gridy = 4;
         this.add(guessField2,gbc);
+        //Guessed word label
         guessedLabel2 = new JLabel("Guessed 2:");
         guessedLabel2.setFont(guessedLabel2.getFont().deriveFont(Font.BOLD, 30f));
         gbc.gridx = 0;
         gbc.gridy = 5;
         this.add(guessedLabel2,gbc);
 
-
+        //Guess 3
+        //Guess label
         guessLabel3 = new JLabel("Guess 3:");
         guessLabel3.setFont(guessLabel3.getFont().deriveFont(24.0f));
         gbc.gridx = 0;
         gbc.gridy = 6;
         this.add(guessLabel3,gbc);
+        //Guess field
         guessField3 = new JTextField(5);
         guessField3.setEnabled(false);
         guessField3.setFont(guessField3.getFont().deriveFont(18.0f));
@@ -104,17 +120,21 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         gbc.gridx = 1;
         gbc.gridy = 6;
         this.add(guessField3,gbc);
+        //Guessed word label
         guessedLabel3 = new JLabel("Guessed 3:");
         guessedLabel3.setFont(guessedLabel3.getFont().deriveFont(Font.BOLD, 30f));
         gbc.gridx = 0;
         gbc.gridy = 7;
         this.add(guessedLabel3,gbc);
 
+        //Guess 4
+        //Guess label
         guessLabel4 = new JLabel("Guess 4:");
         guessLabel4.setFont(guessLabel4.getFont().deriveFont(24.0f));
         gbc.gridx = 0;
         gbc.gridy = 8;
         this.add(guessLabel4,gbc);
+        //Guess field
         guessField4 = new JTextField(5);
         guessField4.setEnabled(false);
         guessField4.setFont(guessField4.getFont().deriveFont(18.0f));
@@ -122,17 +142,21 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         gbc.gridx = 1;
         gbc.gridy = 8;
         this.add(guessField4,gbc);
+        //Guessed word label
         guessedLabel4 = new JLabel("Guessed 4:");
         guessedLabel4.setFont(guessedLabel4.getFont().deriveFont(Font.BOLD, 30f));
         gbc.gridx = 0;
         gbc.gridy = 9;
         this.add(guessedLabel4,gbc);
 
+        //Guess 5
+        //Guess label
         guessLabel5 = new JLabel("Guess 5:");
         guessLabel5.setFont(guessLabel5.getFont().deriveFont(24.0f));
         gbc.gridx = 0;
         gbc.gridy = 10;
         this.add(guessLabel5,gbc);
+        //Guess field
         guessField5 = new JTextField(5);
         guessField5.setEnabled(false);
         guessField5.setFont(guessField5.getFont().deriveFont(18.0f));
@@ -140,17 +164,21 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         gbc.gridx = 1;
         gbc.gridy = 10;
         this.add(guessField5,gbc);
+        //Guessed word label
         guessedLabel5 = new JLabel("Guessed 5:");
         guessedLabel5.setFont(guessedLabel5.getFont().deriveFont(Font.BOLD, 30f));
         gbc.gridx = 0;
         gbc.gridy = 11;
         this.add(guessedLabel5,gbc);
 
+        //Guess 6
+        //Guess label
         guessLabel6 = new JLabel("Guess 6:");
         guessLabel6.setFont(guessLabel6.getFont().deriveFont(24.0f));
         gbc.gridx = 0;
         gbc.gridy = 12;
         this.add(guessLabel6,gbc);
+        //Guess field
         guessField6 = new JTextField(5);
         guessField6.setEnabled(false);
         guessField6.setFont(guessField6.getFont().deriveFont(18.0f));
@@ -158,14 +186,17 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         gbc.gridx = 1;
         gbc.gridy = 12;
         this.add(guessField6,gbc);
+        //Guessed word label
         guessedLabel6 = new JLabel("Guessed 6:");
         guessedLabel6.setFont(guessedLabel6.getFont().deriveFont(Font.BOLD, 30f));
         gbc.gridx = 0;
         gbc.gridy = 13;
         this.add(guessedLabel6,gbc);
 
+        //Submit button
         submit = new JButton("Submit");;
         submit.addActionListener(this);
+        //Allow enter to be pressed as default button to submit
         this.getRootPane().setDefaultButton(submit);
         gbc.gridx = 0;
         gbc.gridy = 14;
@@ -173,6 +204,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         submit.setPreferredSize(new Dimension(270,30));
         this.add(submit,gbc);
 
+        //Guesses left counter
         guessesLeft = new JLabel("Guesses left: 6");
         guessesLeft.setFont(guessesLeft.getFont().deriveFont(14f));
         gbc.gridx = 0;
@@ -180,8 +212,6 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         this.add(guessesLeft,gbc);
 
     }
-
-
 
     public static void main(String[] args) {
 
@@ -201,12 +231,26 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
             e.printStackTrace();
         }
 
-
+    //Start game
        startGame();
 
     }
 
-    //use this method for selecting a word. It's important for marking that the word you have selected is printed out to the console!
+    //Starts the game
+    private static void startGame() {
+        //Starts the game
+        getTarget();
+        ammountOfGuesses = 6;
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Main();
+            }
+        });
+
+    }
+
+    //Use this method for selecting a word. It's important for marking that the word you have selected is printed out to the console!
     public static String getTarget() {
         Random r = new Random();
         String target = targetWords.get(r.nextInt(targetWords.size()));
@@ -227,7 +271,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         }
     }
 
-
+    //Checks if letters are in the word but placed wrong
     public static boolean[] wrongPlacedLetters(String guess){
         String[] guessLetterArray = guess.split("");
         String[] targetLetterArray =  targetWord.split("");
@@ -242,7 +286,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         return wrongPlaceLetters;
     }
 
-    //If letter is not in correct place its set to true, else false
+    //Checks if letters are placed correctly
     public static boolean[] correctPlacedLetters(String guess) {
         //Creates an array of the letters in the guess that are not in the target word
         String[] guessLetterArray = guess.split("");
@@ -259,11 +303,11 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
 
     }
 
-
     @Override
     public void itemStateChanged(ItemEvent e) {
+        //Menu
         if(e.getStateChange() == ItemEvent.SELECTED){
-
+            //Get option by index selected
             if(menu.getSelectedIndex() == 1){
                 //Restart game
                  this.dispose();
@@ -271,6 +315,16 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
             }
             if(menu.getSelectedIndex() == 2){
                 //Stats
+                JOptionPane.showMessageDialog(null, "Words guessed on 1st try: " + statsFirstGuess + "\n"
+                        + "Words guessed on 2nd try: " + statsSecondGuess + "\n"
+                        + "Words guessed on 3rd try: " + statsThirdGuess + "\n"
+                        + "Words guessed on 4th try: " + statsFourthGuess + "\n"
+                        + "Words guessed on 5th try: " + statsFifthGuess + "\n"
+                        + "Words guessed on 6th try: " + statsSixthGuess + "\n"
+                        + "Words guessed total: " + wordsGuessed + "\n"
+                        + "Words streak: " + wordStreak + "\n"
+                        + "Words missed: " + wordsMissed + "\n");
+
             }
             if (menu.getSelectedIndex() == 3){
                 //Help
@@ -289,38 +343,25 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         }
     }
 
-    private static void startGame() {
-        //Starts the game
-        getTarget();
-        ammountOfGuesses = 6;
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Main();
-            }
-        });
-
-    }
-
-    @Override
-    public void valueChanged(ListSelectionEvent e) {
-
-    }
-    
+    //Method for colour coding letters based on condition
     public static String[] colourLetters(String guess){
         String [] guessArray;
         guessArray = guess.split("");
         for (int i = 0; i < guessArray.length; i++) {
+            //If letter is not in word at all
             if(!correctPlacedLetters(guess)[i] && !wrongPlacedLetters(guess)[i]){
                 guessArray[i] = "<font color=\"gray\">"+ guessArray[i] +"</font>";
             }
+            //If letter is in the wrong place
             if(wrongPlacedLetters(guess)[i] && !correctPlacedLetters(guess)[i]){
                 guessArray[i] = "<font color=\"yellow\">"+ guessArray[i] +"</font>";
             }
+            //If letter is placed correctly within the word
             else{
                 guessArray[i] = "<font color=\"green\">"+ guessArray[i] +"</font>";
             }
         }
+        //Return all letters as caps for better display
         for (int i = 0; i < guessArray.length; i++) {
             guessArray[i] = guessArray[i].toUpperCase(Locale.ROOT);
         }
@@ -331,15 +372,17 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
     public void actionPerformed(ActionEvent e) {
 
         String guess = "";
-
             if(e.getActionCommand().equals("Submit") && ammountOfGuesses == 6){
                guess = guessField1.getText();
                 guess = guess.toLowerCase();
-
+        //Makes sure guess is in word list
                if(isGuessValid(guess)){
+                   //Split our string and colour code the letters
                    String[] guessArray = colourLetters(guess);
+                   //Disable the field and enable the next
                    guessField1.setEnabled(false);
                    guessField2.setEnabled(true);
+                   //Print result within lable
                    guessedLabel1.setText("<html>" + "Guessed 1: " + guessArray[0] + guessArray[1] +  guessArray[2] + guessArray[3] + guessArray[4] +"</html>");
                }
 
@@ -399,9 +442,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         //If guess is valid then tell the user which letters are correct and also subtract one from the ammount of guesses.
         //Then loops through asking for a new guess.
         if (isGuessValid(guess)) {
-//            System.out.println(Arrays.toString(correctPlacedLetters(guess)) + " letters are placed correctly");
-//            System.out.println(Arrays.toString(wrongPlacedLetters(guess)) + " letters are in incorrect place, but are in word");
-            //Condition for if the user has guessed the word correctly.
+            //Win conditional + statistics counter
             if (guess.equals(targetWord)) {
                 if(ammountOfGuesses == 6){
                     statsFirstGuess += 1;
@@ -420,19 +461,24 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
                 wordStreak += 1;
                 JOptionPane.showMessageDialog(null, "You win! The word was: " + targetWord.toUpperCase(Locale.ROOT));
             }
-            //Condition for if the user has guessed the word incorrectly.
+            //If guess is valid but not equal to target word we subtract one from the ammount of guesses.
             ammountOfGuesses--;
+            //Conditional if the user has no guesses left.
             if(ammountOfGuesses == 0){
                 wordStreak = 0;
                 wordsMissed += 1;
                 JOptionPane.showMessageDialog(null, "You lost! The word was: " + targetWord.toUpperCase(Locale.ROOT));
             }
         } else {
+            //If the guess is invalid we print a message but do not subtract a guess
             JOptionPane.showMessageDialog(null, "Invalid guess, please try again");
         }
 
     }
 
+
+
+    //Methods for implementations of the ActionListener interface
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -445,6 +491,11 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
 
     @Override
     public void keyReleased(KeyEvent e) {
+
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
 
     }
 }
