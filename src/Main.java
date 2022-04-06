@@ -65,7 +65,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         gbc.gridwidth = 1;
         gbc.insets = new Insets(0,30,0,30);
         guessLabel1 = new JLabel("Guess 1:");
-        guessLabel1.setFont(guessLabel1.getFont().deriveFont(24.0f));
+        guessLabel1.setFont(guessLabel1.getFont().deriveFont(Font.BOLD,24.0f));
         gbc.gridx = 0;
         gbc.gridy = 2;
         this.add(guessLabel1,gbc);
@@ -77,7 +77,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         gbc.gridy = 2;
         this.add(guessField1,gbc);
         //Guessed word label
-        guessedLabel1 = new JLabel("Guessed 1:");
+        guessedLabel1 = new JLabel("              ");
         guessedLabel1.setFont(guessedLabel1.getFont().deriveFont(Font.BOLD, 30f));
         guessedLabel1.setBackground(Color.RED);
         gbc.gridx = 0;
@@ -87,7 +87,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         //Guess 2
         //Guess label
         guessLabel2 = new JLabel("Guess 2:");
-        guessLabel2.setFont(guessLabel2.getFont().deriveFont(24.0f));
+        guessLabel2.setFont(guessLabel2.getFont().deriveFont(Font.BOLD,24.0f));
         gbc.gridx = 0;
         gbc.gridy = 4;
         this.add(guessLabel2,gbc);
@@ -100,7 +100,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         gbc.gridy = 4;
         this.add(guessField2,gbc);
         //Guessed word label
-        guessedLabel2 = new JLabel("Guessed 2:");
+        guessedLabel2 = new JLabel("              ");
         guessedLabel2.setFont(guessedLabel2.getFont().deriveFont(Font.BOLD, 30f));
         gbc.gridx = 0;
         gbc.gridy = 5;
@@ -109,7 +109,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         //Guess 3
         //Guess label
         guessLabel3 = new JLabel("Guess 3:");
-        guessLabel3.setFont(guessLabel3.getFont().deriveFont(24.0f));
+        guessLabel3.setFont(guessLabel3.getFont().deriveFont(Font.BOLD,24.0f));
         gbc.gridx = 0;
         gbc.gridy = 6;
         this.add(guessLabel3,gbc);
@@ -122,7 +122,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         gbc.gridy = 6;
         this.add(guessField3,gbc);
         //Guessed word label
-        guessedLabel3 = new JLabel("Guessed 3:");
+        guessedLabel3 = new JLabel("              ");
         guessedLabel3.setFont(guessedLabel3.getFont().deriveFont(Font.BOLD, 30f));
         gbc.gridx = 0;
         gbc.gridy = 7;
@@ -131,7 +131,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         //Guess 4
         //Guess label
         guessLabel4 = new JLabel("Guess 4:");
-        guessLabel4.setFont(guessLabel4.getFont().deriveFont(24.0f));
+        guessLabel4.setFont(guessLabel4.getFont().deriveFont(Font.BOLD,24.0f));
         gbc.gridx = 0;
         gbc.gridy = 8;
         this.add(guessLabel4,gbc);
@@ -144,7 +144,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         gbc.gridy = 8;
         this.add(guessField4,gbc);
         //Guessed word label
-        guessedLabel4 = new JLabel("Guessed 4:");
+        guessedLabel4 = new JLabel("           ");
         guessedLabel4.setFont(guessedLabel4.getFont().deriveFont(Font.BOLD, 30f));
         gbc.gridx = 0;
         gbc.gridy = 9;
@@ -153,7 +153,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         //Guess 5
         //Guess label
         guessLabel5 = new JLabel("Guess 5:");
-        guessLabel5.setFont(guessLabel5.getFont().deriveFont(24.0f));
+        guessLabel5.setFont(guessLabel5.getFont().deriveFont(Font.BOLD,24.0f));
         gbc.gridx = 0;
         gbc.gridy = 10;
         this.add(guessLabel5,gbc);
@@ -166,7 +166,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         gbc.gridy = 10;
         this.add(guessField5,gbc);
         //Guessed word label
-        guessedLabel5 = new JLabel("Guessed 5:");
+        guessedLabel5 = new JLabel("           ");
         guessedLabel5.setFont(guessedLabel5.getFont().deriveFont(Font.BOLD, 30f));
         gbc.gridx = 0;
         gbc.gridy = 11;
@@ -175,7 +175,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         //Guess 6
         //Guess label
         guessLabel6 = new JLabel("Guess 6:");
-        guessLabel6.setFont(guessLabel6.getFont().deriveFont(24.0f));
+        guessLabel6.setFont(guessLabel6.getFont().deriveFont(Font.BOLD,24.0f));
         gbc.gridx = 0;
         gbc.gridy = 12;
         this.add(guessLabel6,gbc);
@@ -188,7 +188,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         gbc.gridy = 12;
         this.add(guessField6,gbc);
         //Guessed word label
-        guessedLabel6 = new JLabel("Guessed 6:");
+        guessedLabel6 = new JLabel("           ");
         guessedLabel6.setFont(guessedLabel6.getFont().deriveFont(Font.BOLD, 30f));
         gbc.gridx = 0;
         gbc.gridy = 13;
@@ -384,7 +384,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
                    guessField1.setEnabled(false);
                    guessField2.setEnabled(true);
                    //Print result within lable
-                   guessedLabel1.setText("<html>" + "Guessed 1: " + guessArray[0] + guessArray[1] +  guessArray[2] + guessArray[3] + guessArray[4] +"</html>");
+                   guessedLabel1.setText("<html>" + "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;" + guessArray[0] + guessArray[1] +  guessArray[2] + guessArray[3] + guessArray[4] +"</html>");
                }
 
             }
@@ -395,7 +395,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
                     String[] guessArray = colourLetters(guess);
                     guessField2.setEnabled(false);
                     guessField3.setEnabled(true);
-                    guessedLabel2.setText("<html>" + "Guessed 2: " +guessArray[0] + guessArray[1] +  guessArray[2] + guessArray[3] + guessArray[4] +"</html>");
+                    guessedLabel2.setText("<html>" + "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"  +guessArray[0] + guessArray[1] +  guessArray[2] + guessArray[3] + guessArray[4] +"</html>");
                 }
 
             }
@@ -406,7 +406,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
                     String[] guessArray = colourLetters(guess);
                     guessField3.setEnabled(false);
                     guessField4.setEnabled(true);
-                    guessedLabel3.setText("<html>" + "Guessed 3: " +guessArray[0] + guessArray[1] +  guessArray[2] + guessArray[3] + guessArray[4] +"</html>");
+                    guessedLabel3.setText("<html>" + "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;" +guessArray[0] + guessArray[1] +  guessArray[2] + guessArray[3] + guessArray[4] +"</html>");
                 }
             }
             if(e.getActionCommand().equals("Submit") && ammountOfGuesses == 3){
@@ -416,7 +416,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
                     String[] guessArray = colourLetters(guess);
                     guessField4.setEnabled(false);
                     guessField5.setEnabled(true);
-                    guessedLabel4.setText("<html>" + "Guessed 4: " + guessArray[0] + guessArray[1] +  guessArray[2] + guessArray[3] + guessArray[4] +"</html>");
+                    guessedLabel4.setText("<html>" +  "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;" + guessArray[0] + guessArray[1] +  guessArray[2] + guessArray[3] + guessArray[4] +"</html>");
                 }
             }
             if(e.getActionCommand().equals("Submit") && ammountOfGuesses == 2){
@@ -426,7 +426,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
                     String[] guessArray = colourLetters(guess);
                     guessField5.setEnabled(false);
                     guessField6.setEnabled(true);
-                    guessedLabel5.setText("<html>" + "Guessed 5: " +guessArray[0] + guessArray[1] +  guessArray[2] + guessArray[3] + guessArray[4] +"</html>");
+                    guessedLabel5.setText("<html>" +  "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;" +guessArray[0] + guessArray[1] +  guessArray[2] + guessArray[3] + guessArray[4] +"</html>");
                 }
             }
             if(e.getActionCommand().equals("Submit") && ammountOfGuesses == 1){
@@ -436,7 +436,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
                     String[] guessArray = colourLetters(guess);
                     guessField6.setEnabled(false);
                     guessedLabel6.setText(guess);
-                    guessedLabel6.setText("<html>" + "Guessed 6: " +guessArray[0] + guessArray[1] +  guessArray[2] + guessArray[3] + guessArray[4] +"</html>");
+                    guessedLabel6.setText("<html>" +  "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;" +guessArray[0] + guessArray[1] +  guessArray[2] + guessArray[3] + guessArray[4] +"</html>");
                 }
             }
 
