@@ -41,6 +41,7 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         this.setVisible(true);
         this.setLayout(new GridBagLayout());
         this.setTitle("Wordle");
+        this.getContentPane().setBackground(new Color(66, 64, 64));
 
         //Set title
         JLabel title = new JLabel("<html><span style=\"color:#FFFF00\">W</span><span style=\"color:#808080\">O</span><span style=\"color:#00FF00\">R</span><span style=\"color:#FFFF00\">D</span><span style=\"color:#808080\">L</span><span style=\"color:#00FF00\">E</span></html>");
