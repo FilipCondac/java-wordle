@@ -2,15 +2,12 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class Main extends JFrame implements ListSelectionListener, ItemListener, ActionListener {
+public class Main extends JFrame implements ListSelectionListener, ItemListener, ActionListener, KeyListener {
 
     //a list of all possible 5 letter words in English
     public static HashSet<String> dictionary = new HashSet<>();
@@ -46,8 +43,11 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         guessLabel1.setFont(guessLabel1.getFont().deriveFont(24.0f));
         gbc.gridx = 0;
         gbc.gridy = 1;
+
         this.add(guessLabel1,gbc);
         guessField1 = new JTextField(5);
+        guessField1.setFont(guessField1.getFont().deriveFont(18.0f));
+        guessField1.addKeyListener(this);
         gbc.gridx = 1;
         gbc.gridy = 1;
         this.add(guessField1,gbc);
@@ -64,6 +64,8 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         this.add(guessLabel2,gbc);
         guessField2 = new JTextField(5);
         guessField2.setEnabled(false);
+        guessField2.setFont(guessField2.getFont().deriveFont(18.0f));
+        guessField2.addKeyListener(this);
         gbc.gridx = 1;
         gbc.gridy = 3;
         this.add(guessField2,gbc);
@@ -81,6 +83,8 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         this.add(guessLabel3,gbc);
         guessField3 = new JTextField(5);
         guessField3.setEnabled(false);
+        guessField3.setFont(guessField3.getFont().deriveFont(18.0f));
+        guessField3.addKeyListener(this);
         gbc.gridx = 1;
         gbc.gridy = 5;
         this.add(guessField3,gbc);
@@ -97,6 +101,8 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         this.add(guessLabel4,gbc);
         guessField4 = new JTextField(5);
         guessField4.setEnabled(false);
+        guessField4.setFont(guessField4.getFont().deriveFont(18.0f));
+        guessField4.addKeyListener(this);
         gbc.gridx = 1;
         gbc.gridy = 7;
         this.add(guessField4,gbc);
@@ -113,6 +119,8 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         this.add(guessLabel5,gbc);
         guessField5 = new JTextField(5);
         guessField5.setEnabled(false);
+        guessField5.setFont(guessField5.getFont().deriveFont(18.0f));
+        guessField5.addKeyListener(this);
         gbc.gridx = 1;
         gbc.gridy = 9;
         this.add(guessField5,gbc);
@@ -129,6 +137,8 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         this.add(guessLabel6,gbc);
         guessField6 = new JTextField(5);
         guessField6.setEnabled(false);
+        guessField6.setFont(guessField6.getFont().deriveFont(18.0f));
+        guessField6.addKeyListener(this);
         gbc.gridx = 1;
         gbc.gridy = 11;
         this.add(guessField6,gbc);
@@ -138,8 +148,9 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
         gbc.gridy = 12;
         this.add(guessedLabel6,gbc);
 
-        submit = new JButton("Submit");
+        submit = new JButton("Submit");;
         submit.addActionListener(this);
+        this.getRootPane().setDefaultButton(submit);
         gbc.gridx = 0;
         gbc.gridy = 13;
         this.add(submit,gbc);
@@ -427,8 +438,20 @@ public class Main extends JFrame implements ListSelectionListener, ItemListener,
     }
 
 
+    @Override
+    public void keyTyped(KeyEvent e) {
 
+    }
 
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
 }
 
 
